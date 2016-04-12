@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bottom_sheet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/popup_window"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tv_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_account_circle_black_24dp"
+            android:drawablePadding="15dp"
+            android:gravity="center_vertical"
+            android:padding="15dp"
+            android:text="account"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/tv_compare"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_compare_arrows_black_24dp"
+            android:drawablePadding="15dp"
+            android:gravity="center_vertical"
+            android:padding="15dp"
+            android:text="compare"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/tv_desktop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_desktop_mac_black_24dp"
+            android:drawablePadding="15dp"
+            android:gravity="center_vertical"
+            android:padding="15dp"
+            android:text="desktop"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/tv_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_place_black_24dp"
+            android:drawablePadding="15dp"
+            android:gravity="center_vertical"
+            android:padding="15dp"
+            android:text="location"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_compare_arrows_black_24dp"
+            android:drawablePadding="15dp"
+            android:gravity="center_vertical"
+            android:padding="15dp"
+            android:text="compare"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_desktop_mac_black_24dp"
+            android:drawablePadding="15dp"
+            android:gravity="center_vertical"
+            android:padding="15dp"
+            android:text="desktop"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_place_black_24dp"
+            android:drawablePadding="15dp"
+            android:gravity="center_vertical"
+            android:padding="15dp"
+            android:text="location"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_compare_arrows_black_24dp"
+            android:drawablePadding="15dp"
+            android:gravity="center_vertical"
+            android:padding="15dp"
+            android:text="compare"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_desktop_mac_black_24dp"
+            android:drawablePadding="15dp"
+            android:gravity="center_vertical"
+            android:padding="15dp"
+            android:text="desktop"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_place_black_24dp"
+            android:drawablePadding="15dp"
+            android:gravity="center_vertical"
+            android:padding="15dp"
+            android:text="location"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

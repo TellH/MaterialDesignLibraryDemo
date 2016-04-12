@@ -29,4 +29,5 @@ dependencies {
     compile 'com.android.support:cardview-v7:23.2.1'
 
     compile 'me.henrytao:smooth-app-bar-layout:0.2.1'
+    compile 'net.soulwolf.widget:dialogBuilder:1.0.0'
 }
