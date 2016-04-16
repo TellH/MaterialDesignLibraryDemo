@@ -1,6 +1,7 @@
 package com.tellh.materialdesignlibrarydemo;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -15,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
@@ -131,7 +133,12 @@ public class MainActivity extends AppCompatActivity
         hideKeyboard();
         String name=textWraperName.getEditText().getText().toString().trim();
         String passowrd=textWraperPassword.getEditText().getText().toString().trim();
-        Snackbar.make(view,passowrd,Snackbar.LENGTH_LONG).show();
+//        Snackbar.make(view,passowrd,Snackbar.LENGTH_LONG).show();
+        Snackbar snackbar = Snackbar.make(view, "passowrd:"+passowrd, Snackbar.LENGTH_SHORT);
+        View snackbarView = snackbar.getView();
+        TextView textView1 = (TextView) snackbarView.findViewById(R.id.snackbar_text);
+        textView1.setTextColor(Color.parseColor("#C0C0C0"));
+        ColoredSnackbar.info(snackbar).show();
         if (!validatePassword(passowrd)) {
             textWraperPassword.setError("wrong password!");
         }else{
