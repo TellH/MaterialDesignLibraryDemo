@@ -18,9 +18,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.widget.Toast;
-//{@link https://github.com/roughike/BottomBar}
-//{@link https://github.com/aurelhubert/ahbottomnavigation}
-//{@link https://github.com/sephiroth74/Material-BottomNavigation}
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 

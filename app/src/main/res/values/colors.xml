@@ -13,4 +13,8 @@
     <color name="color_tab_3">#8B6B62</color>
     <color name="color_tab_4">#6C4A42</color>
     <color name="color_tab_5">#F63D2B</color>
+    <color name="red">#FF0000</color>
+    <color name="purple">#8000FF</color>
+    <color name="blue">#0080FF</color>
+    <color name="gray">#797979</color>
 </resources>

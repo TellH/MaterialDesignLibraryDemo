@@ -19,7 +19,9 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.tellh.materialdesignlibrarydemo.R;
 
 import java.util.ArrayList;
-
+//{@link https://github.com/roughike/BottomBar}
+//{@link https://github.com/aurelhubert/ahbottomnavigation}
+//{@link https://github.com/sephiroth74/Material-BottomNavigation}
 public class DemoActivity extends AppCompatActivity {
 
     private DemoFragment currentFragment;
