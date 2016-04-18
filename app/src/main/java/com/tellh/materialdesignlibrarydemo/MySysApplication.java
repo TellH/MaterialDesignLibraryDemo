@@ -13,8 +13,8 @@ public class MySysApplication extends Application {
     private static Context context;
     //application实例
     private static MySysApplication instance;
-    public static int screenWidth;
-    public static int screenHeight;
+    public int screenWidth;
+    public int screenHeight;
 
 
     @Override
