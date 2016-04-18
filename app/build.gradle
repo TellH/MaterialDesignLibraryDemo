@@ -35,4 +35,5 @@ dependencies {
 //        exclude group: 'com.android.support:appcompat-v7:23.3.0'
 //        exclude module: 'annotations', group: 'com.google.android'
     }
+    compile 'com.github.orhanobut:logger:1.12'
 }
