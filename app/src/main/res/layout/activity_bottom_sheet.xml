@@ -31,7 +31,6 @@
             android:orientation="vertical">
             <TextView
                 android:id="@+id/tv_bottom_bar"
-                app:layout_behavior="com.tellh.materialdesignlibrarydemo.BottomSheet.AutoHideBehavior"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@color/colorPrimary"

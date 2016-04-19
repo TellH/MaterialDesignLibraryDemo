@@ -86,15 +86,27 @@
                 android:textSize="18sp" />
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center_vertical"
+        android:layout_gravity="bottom"
+        app:layout_behavior=".QuickReturnBottomBehavior"
+        android:paddingLeft="15dp"
+        android:textSize="18sp"
+        android:hint="添加评论"
+        android:textColorHint="@android:color/white"
+        android:textColor="@android:color/white"/>
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_bottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right|bottom"
-        android:layout_margin="@dimen/fab_margin"
-        android:layout_marginBottom="@dimen/fab_margin"
+        android:layout_marginBottom="45dp"
         android:layout_marginRight="@dimen/fab_margin"
-        app:layout_behavior=".QuickReturnBehavior"
+        app:layout_behavior=".QuickReturnBottomBehavior"
+        app:quick_return_style="scale_offset"
         android:src="@drawable/ic_star_white_24dp"
         app:backgroundTint="@color/blue" />
 </android.support.design.widget.CoordinatorLayout>
