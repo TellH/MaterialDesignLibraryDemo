@@ -7,11 +7,11 @@
         <attr name="startHeight" format="dimension" />
         <attr name="finalHeight" format="dimension" />
     </declare-styleable>
-    <declare-styleable name="QuickReturnBottomBehavior">
+    <declare-styleable name="QuickReturnBehavior">
         <attr name="quick_return_style" format="enum">
             <enum name="translate" value="0"/>
-            <enum name="scale" value="1"/>
-            <enum name="translate_offset" value="2"/>
+            <enum name="translate_offset" value="1"/>
+            <enum name="scale" value="2"/>
             <enum name="scale_offset" value="3"/>
         </attr>
     </declare-styleable>

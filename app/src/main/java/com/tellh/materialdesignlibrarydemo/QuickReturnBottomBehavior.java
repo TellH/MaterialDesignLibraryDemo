@@ -21,8 +21,8 @@ public class QuickReturnBottomBehavior extends CoordinatorLayout.Behavior<View> 
     private int distanceToHide;
     private boolean animationTime;
     private static final int TRANSLATE = 0;
-    private static final int SCALE = 1;
-    private static final int TRANSLATE_OFFSET = 2;
+    private static final int TRANSLATE_OFFSET = 1;
+    private static final int SCALE = 2;
     private static final int SCALE_OFFSET = 3;
     private int style;
     private int mOffset;
@@ -35,8 +35,8 @@ public class QuickReturnBottomBehavior extends CoordinatorLayout.Behavior<View> 
     }
 
     private void init(Context context, AttributeSet attrs) {
-        final TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.QuickReturnBottomBehavior);
-        style = typedArray.getInt(R.styleable.QuickReturnBottomBehavior_quick_return_style, 0);
+        final TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.QuickReturnBehavior);
+        style = typedArray.getInt(R.styleable.QuickReturnBehavior_quick_return_style, 0);
         typedArray.recycle();
     }
 
@@ -82,6 +82,7 @@ public class QuickReturnBottomBehavior extends CoordinatorLayout.Behavior<View> 
                 }
                 break;
             default:
+                style=TRANSLATE;
                 break;
         }
     }
