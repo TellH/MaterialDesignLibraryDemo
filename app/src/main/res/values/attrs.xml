@@ -15,11 +15,4 @@
             <enum name="scale_offset" value="3"/>
         </attr>
     </declare-styleable>
-    <declare-styleable name="QuickReturnTopBehavior">
-        <attr name="quick_return_top_style" format="enum">
-            <enum name="default" value="0"/>
-            <enum name="offset" value="1"/>
-        </attr>
-    </declare-styleable>
-
 </resources>

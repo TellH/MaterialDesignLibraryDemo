@@ -23,13 +23,13 @@
                 app:layout_collapseMode="parallax"
                 app:layout_collapseParallaxMultiplier="0.7" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="@dimen/image_width"
-                android:layout_height="@dimen/image_width"
-                android:layout_gravity="center"
-                android:src="@mipmap/ic_launcher"
-                app:layout_behavior="com.tellh.materialdesignlibrarydemo.coordinatorLayout.MyAvatarBehavior"
-                />
+            <!--<de.hdodenhof.circleimageview.CircleImageView-->
+                <!--android:layout_width="@dimen/image_width"-->
+                <!--android:layout_height="@dimen/image_width"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:src="@mipmap/ic_launcher"-->
+                <!--app:layout_behavior="com.tellh.materialdesignlibrarydemo.coordinatorLayout.MyAvatarBehavior"-->
+                <!--/>-->
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -91,14 +91,15 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@android:color/transparent"
-        android:gravity="center_vertical"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
         android:layout_gravity="top"
         app:layout_behavior=".QuickReturnTopBehavior"
         app:quick_return_style="translate_offset"
         android:paddingLeft="15dp"
         android:textSize="18sp"
         android:text="Topbar"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/holo_blue_light"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="50dp"
