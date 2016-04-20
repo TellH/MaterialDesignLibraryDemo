@@ -40,7 +40,6 @@ public class QuickReturnBottomBehavior extends CoordinatorLayout.Behavior<View> 
         typedArray.recycle();
     }
 
-    //经验证，这个方法执行时，child并没有被绘制或初始化，所以不能通过getHeight等方法得到child的尺寸
     @Override
     public boolean onStartNestedScroll(CoordinatorLayout coordinatorLayout, View child, View directTargetChild, View target, int nestedScrollAxes) {
         if (!once) {
