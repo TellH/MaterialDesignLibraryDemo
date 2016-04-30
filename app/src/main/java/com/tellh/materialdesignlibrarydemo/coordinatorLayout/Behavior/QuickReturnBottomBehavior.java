@@ -1,4 +1,4 @@
-package com.tellh.materialdesignlibrarydemo;
+package com.tellh.materialdesignlibrarydemo.coordinatorLayout.Behavior;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -11,6 +11,9 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
+
+import com.tellh.materialdesignlibrarydemo.MySysApplication;
+import com.tellh.materialdesignlibrarydemo.R;
 
 /**
  * Created by tlh on 2016/4/17.

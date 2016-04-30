@@ -125,7 +125,7 @@
         android:src="@drawable/quila"
         app:border_color="@android:color/white"
         app:border_width="2dp"
-        app:layout_behavior="com.tellh.materialdesignlibrarydemo.coordinatorLayout.AvatarImageBehavior"
+        app:layout_behavior="com.tellh.materialdesignlibrarydemo.coordinatorLayout.Behavior.AvatarImageBehavior"
         app:finalHeight="@dimen/image_final_width"
         app:finalYPosition="2dp"
         app:startHeight="2dp"

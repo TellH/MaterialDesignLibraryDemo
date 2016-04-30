@@ -1,4 +1,4 @@
-package com.tellh.materialdesignlibrarydemo.coordinatorLayout;
+package com.tellh.materialdesignlibrarydemo.coordinatorLayout.Behavior;
 
 import android.content.Context;
 import android.content.res.TypedArray;
