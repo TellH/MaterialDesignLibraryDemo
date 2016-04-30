@@ -70,8 +70,9 @@ public class ViewPagerActivity extends AppCompatActivity {
         searchView.setQueryHint("search");
         //增加提交按钮
         searchView.setSubmitButtonEnabled(true);
+        //通过反射增加改变提交按钮的icon
         try {
-            Field field = searchView.getClass().getDeclaredField("mSubmitButton");
+            Field field = searchView.getClass().getDeclaredField("mGoButton");
             field.setAccessible(true);
             ImageView iv = (ImageView) field.get(searchView);
             iv.setImageDrawable(this.getResources().getDrawable(
