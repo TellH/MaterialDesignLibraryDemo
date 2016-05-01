@@ -36,4 +36,13 @@
         android:text="start bottom sheet activity"
         android:id="@+id/button4"
         android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:onClick="onClick"
+        android:text="show bottom popup window" />
+
 </LinearLayout>

@@ -17,4 +17,9 @@
     <color name="purple">#8000FF</color>
     <color name="blue">#0080FF</color>
     <color name="gray">#797979</color>
+
+    <color name="grey">#969696</color>
+    <color name="transparent">#00000000</color>
+    <color name="white">#ffffff</color>
+    <color name="skyblue">#00aff0</color>
 </resources>
