@@ -101,21 +101,22 @@ public class ViewPagerActivity extends AppCompatActivity {
 //        searchView.setSuggestionsAdapter(adapter);
 
         final List<String> items = new ArrayList<>();
-        items.add("aaaaa");
-        items.add("aabbb");
-        items.add("aaccc");
-        items.add("aaddd");
-        items.add("bbbbb");
-        items.add("ccccc");
-        items.add("ddddd");
+        items.add("Abby");
+        items.add("Abel");
+        items.add("Baby");
+        items.add("Barbie");
+        items.add("Barnaby");
+        items.add("Cady");
+        items.add("Caesar");
         final SearchView.SearchAutoComplete searchSrcTextView = (SearchView.SearchAutoComplete) searchView.findViewById(R.id.search_src_text);
         searchSrcTextView.setThreshold(1);
-        searchSrcTextView.setAdapter(new SuggestionAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, items));
+        final List<String> filterItems = new ArrayList<>();
+        searchSrcTextView.setAdapter(new SuggestionAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, items, filterItems));
         searchSrcTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                searchSrcTextView.setText(items.get(position));
-                searchSrcTextView.setSelection(items.get(position).length());
+                searchSrcTextView.setText(filterItems.get(position));
+                searchSrcTextView.setSelection(filterItems.get(position).length());
             }
         });
 
@@ -189,9 +190,10 @@ public class ViewPagerActivity extends AppCompatActivity {
         private List<T> filteredItems;
         private ArrayFilter mFilter;
 
-        public SuggestionAdapter(Context context, @LayoutRes int resource, @NonNull List<T> list) {
+        public SuggestionAdapter(Context context, @LayoutRes int resource, @NonNull List<T> list, List<T> filterItems) {
             super(context, resource, list);
             this.items = list;
+            this.filteredItems = filterItems;
         }
 
         @Override
@@ -240,7 +242,14 @@ public class ViewPagerActivity extends AppCompatActivity {
 
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
-                filteredItems = (List<T>) results.values;
+//                filteredItems = (List<T>) results.values;
+                List<T> result = (List<T>) results.values;
+                if (result!=null){
+                    filteredItems.clear();
+                    for (T t : result) {
+                        filteredItems.add(t);
+                    }
+                }
                 if (results.count > 0) {
                     notifyDataSetChanged();
                 } else {
