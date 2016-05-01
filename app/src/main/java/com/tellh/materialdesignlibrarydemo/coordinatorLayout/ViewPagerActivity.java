@@ -24,6 +24,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Filter;
 import android.widget.ImageView;
 
+import com.orhanobut.logger.Logger;
 import com.tellh.materialdesignlibrarydemo.R;
 
 import java.lang.reflect.Field;
@@ -54,16 +55,7 @@ public class ViewPagerActivity extends AppCompatActivity {
         initView();
         setSupportActionBar(toolbar);
 
-//        获取应用当前的主题
-        int uiMode = getResources().getConfiguration().uiMode;
-        int dayNightUiMode = uiMode & Configuration.UI_MODE_NIGHT_MASK;
-        if (dayNightUiMode == Configuration.UI_MODE_NIGHT_NO) {
-            mDayNightMode = AppCompatDelegate.MODE_NIGHT_NO;
-        } else if (dayNightUiMode == Configuration.UI_MODE_NIGHT_YES) {
-            mDayNightMode = AppCompatDelegate.MODE_NIGHT_YES;
-        } else {
-            mDayNightMode = AppCompatDelegate.MODE_NIGHT_AUTO;
-        }
+        updateDataNightUiMode();
 
         mViewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         mViewPagerAdapter.addFragment("Cat", PagerFragment.newInstance());
@@ -80,6 +72,20 @@ public class ViewPagerActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         tabLayout.setTabGravity(TabLayout.GRAVITY_CENTER);
+        Logger.d("onCreate");
+    }
+
+    private void updateDataNightUiMode() {
+        //        获取应用当前的主题
+        int uiMode = getResources().getConfiguration().uiMode;
+        int dayNightUiMode = uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        if (dayNightUiMode == Configuration.UI_MODE_NIGHT_NO) {
+            mDayNightMode = AppCompatDelegate.MODE_NIGHT_NO;
+        } else if (dayNightUiMode == Configuration.UI_MODE_NIGHT_YES) {
+            mDayNightMode = AppCompatDelegate.MODE_NIGHT_YES;
+        } else {
+            mDayNightMode = AppCompatDelegate.MODE_NIGHT_AUTO;
+        }
     }
 
     private void initView() {
@@ -109,6 +115,14 @@ public class ViewPagerActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         MenuItem searchItem = menu.findItem(R.id.action_search);
+        Logger.d("onCreateOptionsMenu");
+        //根据当前模式设置菜单图标
+        MenuItem shareItem=menu.findItem(R.id.action_share);
+        if (mDayNightMode==AppCompatDelegate.MODE_NIGHT_NO){
+            shareItem.setIcon(R.drawable.ic_share_black_24dp);
+        }else if (mDayNightMode==AppCompatDelegate.MODE_NIGHT_YES){
+            shareItem.setIcon(R.drawable.ic_share_white_24dp);
+        }
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         searchView.setQueryHint("search");
 //        searchView.setInputType();

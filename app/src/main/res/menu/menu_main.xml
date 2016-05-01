@@ -12,7 +12,7 @@
         app:actionViewClass="android.support.v7.widget.SearchView"
         android:title="Search" />
 
-    <item android:id="@+id/menu_share"
+    <item android:id="@+id/action_share"
         android:icon="@drawable/ic_share_black_24dp"
         app:showAsAction="always"
         android:title="Favorite" />
