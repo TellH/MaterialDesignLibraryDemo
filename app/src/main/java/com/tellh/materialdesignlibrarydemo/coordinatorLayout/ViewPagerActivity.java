@@ -1,6 +1,11 @@
 package com.tellh.materialdesignlibrarydemo.coordinatorLayout;
 
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.annotation.LayoutRes;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -11,11 +16,17 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Filter;
 import android.widget.ImageView;
 
 import com.tellh.materialdesignlibrarydemo.R;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by tlh on 2016/4/10.
@@ -68,6 +79,7 @@ public class ViewPagerActivity extends AppCompatActivity {
         MenuItem searchItem = menu.findItem(R.id.action_search);
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         searchView.setQueryHint("search");
+//        searchView.setInputType();
         //增加提交按钮
         searchView.setSubmitButtonEnabled(true);
         //通过反射增加改变提交按钮的icon
@@ -80,6 +92,40 @@ public class ViewPagerActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+//        Cursor cursor = getTestCursor();
+//        @SuppressWarnings("deprecation")
+//        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
+//                R.layout.item, cursor, new String[]{"name"},
+//                new int[]{R.id.text});
+//        searchView.setSuggestionsAdapter(adapter);
+
+        final List<String> items = new ArrayList<>();
+        items.add("aaaaa");
+        items.add("aabbb");
+        items.add("aaccc");
+        items.add("aaddd");
+        items.add("bbbbb");
+        items.add("ccccc");
+        items.add("ddddd");
+        final SearchView.SearchAutoComplete searchSrcTextView = (SearchView.SearchAutoComplete) searchView.findViewById(R.id.search_src_text);
+        searchSrcTextView.setThreshold(1);
+        searchSrcTextView.setAdapter(new SuggestionAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, items));
+        searchSrcTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                searchSrcTextView.setText(items.get(position));
+                searchSrcTextView.setSelection(items.get(position).length());
+            }
+        });
+
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                return false;
+            }
+        });
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             /**
              * 当用户按下键盘的提交按钮时回调
@@ -105,4 +151,102 @@ public class ViewPagerActivity extends AppCompatActivity {
         return true;
     }
 
+
+    //添加suggestion需要的数据
+    public Cursor getTestCursor() {
+        SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(
+                this.getFilesDir() + "/my.db3", null);
+        Cursor cursor = null;
+        String insertSql = "insert into tb_test (name,age) values (?,?)";
+        try {
+            db.execSQL(insertSql, new Object[]{"Abby", 1});
+            db.execSQL(insertSql, new Object[]{"Abel", 2});
+            db.execSQL(insertSql, new Object[]{"Baby", 3});
+            db.execSQL(insertSql, new Object[]{"Barbie", 4});
+            db.execSQL(insertSql, new Object[]{"Barnaby", 5});
+            db.execSQL(insertSql, new Object[]{"Cady", 5});
+            db.execSQL(insertSql, new Object[]{"Caesar", 5});
+            String querySql = "select * from tb_test";
+            cursor = db.rawQuery(querySql, null);
+        } catch (Exception e) {
+            String sql = "create table tb_test (_id integer primary key autoincrement,name varchar(20),age integer)";
+            db.execSQL(sql);
+            db.execSQL(insertSql, new Object[]{"Abby", 1});
+            db.execSQL(insertSql, new Object[]{"Abel", 2});
+            db.execSQL(insertSql, new Object[]{"Baby", 3});
+            db.execSQL(insertSql, new Object[]{"Barbie", 4});
+            db.execSQL(insertSql, new Object[]{"Barnaby", 5});
+            db.execSQL(insertSql, new Object[]{"Cady", 5});
+            db.execSQL(insertSql, new Object[]{"Caesar", 5});
+            String querySql = "select * from tb_test";
+            cursor = db.rawQuery(querySql, null);
+        }
+        return cursor;
+    }
+
+    class SuggestionAdapter<T> extends ArrayAdapter<T> {
+        private List<T> items;
+        private List<T> filteredItems;
+        private ArrayFilter mFilter;
+
+        public SuggestionAdapter(Context context, @LayoutRes int resource, @NonNull List<T> list) {
+            super(context, resource, list);
+            this.items = list;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public T getItem(int position) {
+            if (filteredItems == null)
+                filteredItems = new ArrayList<>();
+            return filteredItems.get(position);
+        }
+
+        @Override
+        public Filter getFilter() {
+            if (mFilter == null) {
+                mFilter = new ArrayFilter();
+            }
+            return mFilter;
+        }
+
+        public int getCount() {
+            if (filteredItems == null)
+                filteredItems = new ArrayList<>();
+            return filteredItems.size();
+        }
+
+        private class ArrayFilter extends Filter {
+            @Override
+            protected FilterResults performFiltering(CharSequence prefix) {
+                FilterResults results = new FilterResults();
+                //custom-filtering of results
+                List<String> resultList = new ArrayList<>();
+                if (items.get(0) instanceof String) {
+                    for (T item : items) {
+                        String txt = (String) item;
+                        if (txt.contains(prefix))
+                            resultList.add(txt);
+                    }
+                }
+                results.values = resultList;
+                results.count = resultList.size();
+                return results;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                filteredItems = (List<T>) results.values;
+                if (results.count > 0) {
+                    notifyDataSetChanged();
+                } else {
+                    notifyDataSetInvalidated();
+                }
+            }
+        }
+    }
 }
