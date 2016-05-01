@@ -3,15 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity">
 
+    <!--SearchView是自带图标的-->
+    <item
+        android:id="@+id/action_search"
+        android:orderInCategory="0"
+        android:icon="@drawable/ic_search_black_24dp"
+        app:showAsAction="always"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        android:title="Search" />
+
     <item android:id="@+id/menu_share"
         android:icon="@drawable/ic_share_black_24dp"
         app:showAsAction="always"
         android:title="Favorite" />
+
+    <item android:id="@+id/action_day_mode"
+        app:showAsAction="never"
+        android:title="Day Mode"/>
     <item
-        android:id="@+id/action_search"
-        android:orderInCategory="100"
-        android:icon="@drawable/ic_search_black_24dp"
-        app:showAsAction="ifRoom"
-        app:actionViewClass="android.support.v7.widget.SearchView"
-        android:title="Search" />
+        android:id="@+id/action_night_mode"
+        android:title="Night Mode"
+        app:showAsAction="never" />
 </menu>

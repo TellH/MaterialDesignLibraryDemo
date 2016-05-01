@@ -2,6 +2,7 @@ package com.tellh.materialdesignlibrarydemo;
 
 import android.app.Application;
 import android.content.Context;
+import android.support.v7.app.AppCompatDelegate;
 
 import com.orhanobut.logger.Logger;
 
@@ -16,6 +17,9 @@ public class MySysApplication extends Application {
     public int screenWidth;
     public int screenHeight;
 
+    static {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO);
+    }
 
     @Override
     public void onCreate() {
