@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <android.support.v4.view.ViewPager
+    android:id="@+id/view_pager"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+  <android.support.design.widget.AppBarLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.Toolbar
+      android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+      app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
+      app:navigationIcon="@drawable/ic_arrow_back" />
+
+    <android.support.design.widget.TabLayout
+      android:id="@+id/tab_layout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" />
+  </android.support.design.widget.AppBarLayout>
+  <com.github.rubensousa.floatingtoolbar.FloatingToolbar
+      android:id="@+id/floatingToolbar"
+      android:layout_width="match_parent"
+      android:layout_height="?attr/actionBarSize"
+      android:layout_gravity="bottom"
+      android:background="@color/blue"
+      app:layout_behavior="com.tellh.materialdesignlibrarydemo.coordinatorLayout.Behavior.QuickReturnBottomBehavior"
+      app:floatingMenu="@menu/menu_bottom_bar" />
+  <!--自定义bottom toolbar的view app:floatingCustomView-->
+  <!--app:floatingItemBackground -> Drawable resource-->
+  <!--app:floatingCustomView -> Layout resource-->
+  <!--app:floatingMenu -> Menu resource-->
+  <android.support.design.widget.FloatingActionButton
+      android:id="@+id/fab"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="bottom|end"
+      android:layout_margin="@dimen/fab_margin"
+      android:backgroundTint="@color/blue"
+      app:layout_behavior="com.tellh.materialdesignlibrarydemo.coordinatorLayout.Behavior.QuickReturnBottomBehavior"
+      android:src="@drawable/ic_content_add" />
+</android.support.design.widget.CoordinatorLayout>
