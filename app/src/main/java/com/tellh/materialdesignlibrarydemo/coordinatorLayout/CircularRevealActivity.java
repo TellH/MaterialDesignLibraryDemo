@@ -35,10 +35,8 @@ public class CircularRevealActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private Toolbar toolbar;
     private TabLayout tabLayout;
-    private int mDayNightMode = AppCompatDelegate.MODE_NIGHT_AUTO;
     private FloatingToolbar mFloatingToolbar;
     private FloatingActionButton fab;
-    private CoordinatorLayout mLayout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,8 +44,6 @@ public class CircularRevealActivity extends AppCompatActivity {
         setContentView(R.layout.activity_circular_reveal);
         initView();
         setSupportActionBar(toolbar);
-
-        updateDataNightUiMode();
 
         mViewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         mViewPagerAdapter.addFragment("Cat", PagerFragment.newInstance());
@@ -66,22 +62,8 @@ public class CircularRevealActivity extends AppCompatActivity {
         tabLayout.setTabGravity(TabLayout.GRAVITY_CENTER);
     }
 
-    private void updateDataNightUiMode() {
-        //        获取应用当前的主题
-        int uiMode = getResources().getConfiguration().uiMode;
-        int dayNightUiMode = uiMode & Configuration.UI_MODE_NIGHT_MASK;
-        if (dayNightUiMode == Configuration.UI_MODE_NIGHT_NO) {
-            mDayNightMode = AppCompatDelegate.MODE_NIGHT_NO;
-        } else if (dayNightUiMode == Configuration.UI_MODE_NIGHT_YES) {
-            mDayNightMode = AppCompatDelegate.MODE_NIGHT_YES;
-        } else {
-            mDayNightMode = AppCompatDelegate.MODE_NIGHT_AUTO;
-        }
-    }
-
     private void initView() {
         viewPager = (ViewPager) findViewById(R.id.view_pager);
-        mLayout = (CoordinatorLayout) findViewById(R.id.container);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         mFloatingToolbar = (FloatingToolbar) findViewById(R.id.floatingToolbar);
@@ -100,16 +82,6 @@ public class CircularRevealActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_day_mode:
-                if (mDayNightMode == AppCompatDelegate.MODE_NIGHT_NO) return true;
-                getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                recreate();
-                return true;
-            case R.id.action_night_mode:
-                if (mDayNightMode == AppCompatDelegate.MODE_NIGHT_YES) return true;
-                getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                recreate();
-                return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -125,15 +97,7 @@ public class CircularRevealActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        MenuItem searchItem = menu.findItem(R.id.action_search);
-        //根据当前模式设置菜单图标
-        MenuItem shareItem = menu.findItem(R.id.action_share);
-        if (mDayNightMode == AppCompatDelegate.MODE_NIGHT_NO) {
-            shareItem.setIcon(R.drawable.ic_share_black_24dp);
-        } else if (mDayNightMode == AppCompatDelegate.MODE_NIGHT_YES) {
-            shareItem.setIcon(R.drawable.ic_share_white_24dp);
-        }
+        getMenuInflater().inflate(R.menu.menu_circle_reveal, menu);
         return true;
     }
 }
